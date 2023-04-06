@@ -1,9 +1,18 @@
 <template>
-  <Tutorial/>
+  <landing-page />
 </template>
 
 <script>
-export default {
-  name: 'IndexPage'
-}
+import LandingPage from '~/components/LandingPage.vue'
+  export default {
+    components: { 
+      LandingPage 
+    },
+    name: 'IndexPage',
+    isSelected(isCircle) {
+      console.log(isCircle)
+      this.isCircle = isCircle
+    }
+  }
+  
 </script>

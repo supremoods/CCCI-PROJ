@@ -21,10 +21,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/main.css',
+    'boxicons/css/boxicons.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/node_modules/tw-elements', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

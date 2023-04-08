@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 
-*{
+* {
    box-sizing: border-box;
    margin: 0;
    padding: 0;
@@ -13,10 +13,41 @@
    scroll-behavior: smooth;
 }
 
+/* .wrapper{
+   @apply mx-64;
+} */
 
-.lets-go-txt.isCircle{
-   @apply text-violet-900;
+
+.title {
+   @apply text-base-aqua;
+}
+
+.help-icon:hover {
+   @apply cursor-pointer drop-shadow-xl scale-150;
+   @apply transition duration-300 ease-in-out;
+}
+
+.count-down .count-down-text {
+   animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 
+@keyframes ping {
+   75%,
+   100% {
+      transform: scale(2);
+      opacity: 0;
+   }
+}
 
+.stats {
+   @apply  flex text-base-blue gap-3;
+}
+
+.stats span {
+   @apply font-bold text-base-aqua;
+}
+
+.progress{
+   transition: all 1s ease-in;
+}

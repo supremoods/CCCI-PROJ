@@ -9,18 +9,18 @@
          </div>
          <div class="flex px-24 py-16 justify-between">
             <div class="flex flex-col">
-               <div class="stats">Question: <span>4/15</span></div>
+               <div class="stats">Question: <span>4/{{beginnerQuestionsCount}}</span></div>
                <div class="stats">Correct Answer: <span>0</span></div>
-               <div class="stats">Points: <span>1530</span></div>
+               <div class="stats">Points: <span>{}</span></div>
                <div class="stats">Multiplier <span>x2</span></div>
             </div>
             <div class="flex">
-               <div class="stats">Difficulty: <span>Intermediate</span></div>
+               <div class="stats">Difficulty: <span>{{difficulty}}</span></div>
             </div>
          </div>
-         <div class="flex px-24">
-            <p class="text-base-aqua text-2xl">
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+         <div class="flex px-24 justify-center">
+            <p class="text-base-aqua text-3xl">
+               {{questions[0].question}}
             </p>
          </div>
       </div>
@@ -28,18 +28,49 @@
 </template>
 
 <script>
+   const questionaire = require('~/assets/questionaire/questions.json')
+
    export default{
       data() {
          return {
             count: 30,
-            bgColor: "bg-base-aqua"
+            bgColor: "bg-base-aqua",
+            questionaire: questionaire,
+            correctAnswer:0,
+            points:0
          }
+      },
+      computed: {
+         beginnerQuestionsCount() {
+            return questionaire.questions
+               .filter(q => q.category === 'beginner')
+               .reduce((total, q) => total + q.items.length, 0)
+         },
+         intermediateQuestionsCount() {
+            return questionaire.questions
+               .filter(q => q.category === 'intermediate')
+               .reduce((total, q) => total + q.items.length, 0)
+         },
+         advancedQuestionsCount() {
+            return questionaire.questions
+               .filter(q => q.category === 'advanced')
+               .reduce((total, q) => total + q.items.length, 0)
+         },
+         difficulty() {
+            return questionaire.questions.find(
+               q => q.category === "beginner" 
+            ).category
+         },
+         questions() {
+            return questionaire.questions.find(
+               q => q.category === "beginner" 
+            ).items
+         },
       },
       mounted() {
          const progress = this.$refs['progress-bar']
-
          this.countDown(progress)
-
+         //  print out the questions category only
       },          
       methods: {
          countDown(progress) {
@@ -48,10 +79,9 @@
                count--
                this.count = count
                const percent = (count / 30) * 100
-               console.log(percent)
                if(percent < 30) {
                   this.bgColor = "bg-base-red"
-               } else if(percent < 50) {
+               } else if(percent < 60) {
                   this.bgColor = "bg-base-yellow"
                } else {
                   this.bgColor = "bg-base-aqua"

@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "category": "beginner",
+      "items": [
+        {
+          "question": "What is the process of inserting an element in a stack?",
+          "choices": [
+            "Create",
+            "Push",
+            "Evaluation",
+            "Pop"
+          ],
+          "answer": "Push",
+          "explanation": "The Push operation allows users to insert elements in the stack. If the stack is filled completely and trying to perform push operation, stack-overflow can happen."
+        },
+        {
+          "question": "What is the process of removing an element from a stack?",
+          "choices": [
+            "Create",
+            "Push",
+            "Evaluation",
+            "Pop"
+          ],
+          "answer": "Pop",
+          "explanation": "The Pop operation allows users to remove elements from the stack. If the stack is empty and trying to perform pop operation, stack-underflow can happen."
+        }
+      ]
+    }
+
+  ]
+}

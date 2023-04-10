@@ -17,7 +17,8 @@ module.exports = {
           "base-blue": "#8D9EFF",
           "base-aqua": "#B9E0FF",
           "base-red": "#FF5656",
-          "base-yellow": "#FF7A2F"
+          "base-yellow": "#FF7A2F",
+          "base-green": "#00C48C",
       } 
     }
   },

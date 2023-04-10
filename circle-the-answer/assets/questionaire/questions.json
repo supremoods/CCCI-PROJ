@@ -26,6 +26,22 @@
           "explanation": "The Pop operation allows users to remove elements from the stack. If the stack is empty and trying to perform pop operation, stack-underflow can happen."
         }
       ]
+    },
+    {
+      "category": "intermediate",
+      "items":[
+        {
+          "question": "In a stack, if a user tries to remove an element from an empty stack it is called",
+          "choices": [
+            "Underflow",
+            "Stack-overflow",
+            "Empty collection",
+            "Garbage Collection"
+          ],
+          "answer": "Underflow",
+          "explanation": "Underflow occurs when the user performs a pop operation on an empty stack. Overflow occurs when the stack is full, and the user performs a push operation. Garbage Collection is used to recover the memory occupied by objects that are no longer used"
+        }
+      ]
     }
 
   ]

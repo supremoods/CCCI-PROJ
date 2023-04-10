@@ -20,13 +20,13 @@
 }
 
 
-
 .canvas {
    @apply absolute top-0;
 }
 
 .menu-item {
    @apply h-32 items-center justify-center flex;
+   
 }
 
 .menu-item h1 {
@@ -48,7 +48,6 @@
 
 
 @keyframes ping {
-
    75%,
    100% {
       transform: scale(2);
@@ -76,17 +75,23 @@
    @apply h-0 overflow-hidden transition-all duration-500 ease-in-out;
 }
 
-.main-menu.isShow {
+.main-menu.isShow,
+.enter-username.isShow,
+.encircle-diff.isShow,
+.count-down.isShow,
+.questions.isShow {
    @apply h-screen;
 }
 
-.enter-username.isShow {
-   @apply h-screen;
-}
 
 .username[type="text"] {
-   @apply transition-all duration-500 ease-in-out;
+   @apply transition-all duration-500 ease-in-out border;
+   @apply w-full  text-4xl p-3 text-center bg-transparent  rounded-md focus:outline-none text-base-aqua;
    animation: border 2s linear infinite;
+}
+
+.username[type="text"]::placeholder {
+   @apply text-base-blue;
 }
 
 
@@ -96,7 +101,7 @@
    }
 
    50% {
-      @apply border-b border-base-aqua shadow-lg shadow-base-aqua/50
+      @apply border-b-2 border-base-aqua shadow-2xl shadow-base-aqua/50
    }
 
    100% {
@@ -182,9 +187,37 @@ input::-moz-focus-outer {
    animation: border 2s linear infinite;
 }
 
+
+.opt{
+   @apply flex relative items-center justify-center h-32;
+}
+
+.difficulty-options .opt .opt-label{
+   @apply text-3xl text-base-blue font-bold;
+}
+
+
+.nav-options .opt .opt-label{
+   @apply text-2xl text-base-blue;
+}
+
+
 @media screen and (max-width: 810px) {
    .pen-settings .wrapper {
       @apply items-center;
+   }
+
+   .title-header .title{
+      @apply text-4xl;
+   }
+
+
+   .username[type="text"] {
+      @apply text-3xl;
+   }
+
+   .input-container{
+      @apply w-10/12;
    }
 
    .pen-thickness {
@@ -195,5 +228,21 @@ input::-moz-focus-outer {
       @apply w-full justify-center items-center ;
    }
 
+   .difficulty-options{
+      @apply flex-col mt-5;
+   }
 
+   .nav-options{
+      @apply mt-5;
+   }
+
+}
+@media screen and (max-width: 524px){
+   .nav-options{
+      @apply w-10/12;
+   }
+
+   .encircle-diff .wrapper{
+      @apply gap-5;
+   }
 }

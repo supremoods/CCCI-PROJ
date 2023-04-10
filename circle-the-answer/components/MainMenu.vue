@@ -9,20 +9,40 @@
          </div>
          <div class="flex flex-col w-96">
             <div class="menu-item relative">
-               <h1>Start</h1>
-               <encircle @get-selected="start" :penColor="penColor" :penThickness="penThickness"/>
+               <h1 ref="Start">Start</h1>
+               <encircle 
+                  @selected="isSelectedStart"
+                  @get-selected="start" 
+                  :penColor="penColor" 
+                  :penThickness="penThickness"
+               />
             </div>
             <div class="menu-item relative">
-               <h1>Score Board</h1>
-               <encircle @get-selected="scoreBoard" :penColor="penColor" :penThickness="penThickness"/>
+               <h1 ref="ScoreBoard">Score Board</h1>
+               <encircle 
+                  @selected="isSelectedScoreBoard"
+                  @get-selected="scoreBoard" 
+                  :penColor="penColor" 
+                  :penThickness="penThickness"
+               />
             </div>   
             <div class="menu-item relative">
-               <h1>Pen Settings</h1>
-               <encircle  @get-selected="penSettings" :penColor="penColor" :penThickness="penThickness"/>
+               <h1 ref="PenSettings">Pen Settings</h1>
+               <encircle  
+                  @selected="isSelectedPenSettings"
+                  @get-selected="penSettings" 
+                  :penColor="penColor" 
+                  :penThickness="penThickness"
+               />
             </div>
          </div>
       </div>
-      <pen-settings @getPenColor="color" @getPenThickness="thickness" @closeSettings="penSettings" :isPenSettings="isPenSettings"/>
+      <pen-settings 
+         @getPenColor="color" 
+         @getPenThickness="thickness" 
+         @closeSettings="penSettings" 
+         :isPenSettings="isPenSettings"
+      />
    </div>
 </template>
 
@@ -83,8 +103,28 @@ export default {
       },
       thickness(thickness){
          this.penThickness = thickness;
+      },
+      isSelectedStart(selected){
+         if(selected){
+            this.$refs.Start.style = `color: ${this.penColor};`
+         }else{
+            this.$refs.Start.style = `color: #B9E0FF`
+         }
+      },
+      isSelectedScoreBoard(selected){
+         if(selected){
+            this.$refs.ScoreBoard.style = `color: ${this.penColor};`
+         }else{
+            this.$refs.ScoreBoard.style = `color: #B9E0FF`
+         }
+      },
+      isSelectedPenSettings(selected){
+         if(selected){
+            this.$refs.PenSettings.style = `color: ${this.penColor};`
+         }else{
+            this.$refs.PenSettings.style = `color: #B9E0FF`
+         }
       }
-
    }
 }
 </script>

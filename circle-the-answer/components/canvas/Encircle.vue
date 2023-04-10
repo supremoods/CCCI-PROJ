@@ -35,6 +35,7 @@
           this.startY = event.offsetY
           this.context.beginPath()
           this.context.moveTo(this.startX, this.startY)
+          this.$emit('selected', this.isDrawing)
         },
         draw(event){
           if (this.isDrawing) {
@@ -47,6 +48,8 @@
           const endX = event.offsetX
           const endY = event.offsetY
 
+          this.$emit('selected', this.isDrawing)
+          
           if(this.startX === endX && this.startY === endY){
             this.isCircle = false
             this.$emit('get-selected', this.isCircle)
@@ -80,10 +83,13 @@
           this.context.lineWidth = this.penThickness
           this.context.lineCap = 'round'
           this.context.lineJoin = 'round'
+          this.context.shadowOffsetX = 0
+          this.context.shadowOffsetY = 0
           this.context.shadowBlur = 5
           this.context.shadowColor = this.penColor
           this.context.globalCompositeOperation = 'source-over'
           this.context.globalAlpha = 1
+
         }
      },
       watch: {

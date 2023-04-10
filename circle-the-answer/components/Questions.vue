@@ -1,5 +1,5 @@
 <template>
-   <div class="questions bg-base-violet flex flex-col relative">
+   <div class="questions bg-base-violet flex flex-col relative" :class="{'isShow':isShow}">
       <div class="flex help-icon bg-base-violet-light p-2 absolute right-0 rounded-full m-11">
          <i class='bx bx-question-mark text-lg font-bold text-base-aqua'></i>
       </div>
@@ -34,6 +34,12 @@
    const questionaire = require('~/assets/questionaire/questions.json')
 
    export default{
+      props:{
+         isShow: {
+            type: Boolean,
+            default: false
+         },
+      },
       data() {
          return {
             count: 30,
@@ -43,6 +49,7 @@
             counterQuestion:0,
             points:0,
             multiplier:2,
+            isShow: false,
          }
       },
       computed: {
@@ -73,11 +80,7 @@
          },
 
       },
-      mounted() {
-         const progress = this.$refs['progress-bar']
-         this.countDown(progress)
-         //  print out the questions category only
-      },          
+       
       methods: {
          countDown(progress) {
             let count = this.count
@@ -98,6 +101,14 @@
                   clearInterval(interval)
                }
             }, 1000)
+         }
+      },
+      watch: {
+         isShow() {
+            if(this.isShow) {
+               const progress = this.$refs['progress-bar']
+               this.countDown(progress)
+            }
          }
       }
    }

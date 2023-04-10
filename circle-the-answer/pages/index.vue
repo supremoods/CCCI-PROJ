@@ -15,9 +15,24 @@
       :penColor="penColor"
     />
 
-    <encircle-difficulty />
-    <count-down />
-    <questions />
+    <encircle-difficulty 
+      @back="backEncircleDifficulty"
+      @next="nextEncircleDifficulty"
+      :isShow="isEncircleDifficulty"
+      :penThickness="penThickness"
+      :penColor="penColor"
+    />
+
+    <count-down 
+      :isShow="isCountDown"
+      @next="nextQuestions"
+    />
+
+    <questions 
+      :isShow="isQuestions"
+      @back="backToMainMenu"
+    />
+
   </div>
 </template>
 
@@ -64,6 +79,30 @@
           if(isNext){
             this.isEnterUsername = false
             this.isEncircleDifficulty = true
+          }
+        },
+        backEncircleDifficulty(isBack){
+          if(isBack){
+            this.isEncircleDifficulty = false
+            this.isEnterUsername = true
+          }
+        },
+        nextEncircleDifficulty(isNext){
+          if(isNext){
+            this.isEncircleDifficulty = false
+            this.isCountDown = true
+          }
+        },
+        nextQuestions(isNext){
+          if(isNext){
+            this.isCountDown = false
+            this.isQuestions = true
+          }
+        },
+        backToMainMenu(isBack){
+          if(isBack){
+            this.isQuestions = false
+            this.isMainMenu = true
           }
         },
         color(color){

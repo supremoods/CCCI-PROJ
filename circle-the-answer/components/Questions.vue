@@ -1,5 +1,5 @@
 <template>
-   <div class="encircle-diff h-screen bg-base-violet flex flex-col relative">
+   <div class="questions bg-base-violet flex flex-col relative">
       <div class="flex help-icon bg-base-violet-light p-2 absolute right-0 rounded-full m-11">
          <i class='bx bx-question-mark text-lg font-bold text-base-aqua'></i>
       </div>
@@ -9,10 +9,10 @@
          </div>
          <div class="flex px-24 py-16 justify-between">
             <div class="flex flex-col">
-               <div class="stats">Question: <span>4/{{beginnerQuestionsCount}}</span></div>
-               <div class="stats">Correct Answer: <span>0</span></div>
-               <div class="stats">Points: <span>{}</span></div>
-               <div class="stats">Multiplier <span>x2</span></div>
+               <div class="stats">Question: <span>{{counterQuestion+1}}/{{beginnerQuestionsCount}}</span></div>
+               <div class="stats">Correct Answer: <span>{{ correctAnswer }}</span></div>
+               <div class="stats">Points: <span>{{points}}</span></div>
+               <div class="stats">Multiplier: <span>x{{multiplier}}</span></div>
             </div>
             <div class="flex">
                <div class="stats">Difficulty: <span>{{difficulty}}</span></div>
@@ -20,8 +20,11 @@
          </div>
          <div class="flex px-24 justify-center">
             <p class="text-base-aqua text-3xl">
-               {{questions[0].question}}
+               {{questions[counterQuestion].question}}
             </p>
+         </div>
+         <div class="flex px-24 justify-center items-center">
+            <!-- <canvas-choices :choices="questions[counterQuestion].choices" /> -->
          </div>
       </div>
    </div>
@@ -37,7 +40,9 @@
             bgColor: "bg-base-aqua",
             questionaire: questionaire,
             correctAnswer:0,
-            points:0
+            counterQuestion:0,
+            points:0,
+            multiplier:2,
          }
       },
       computed: {
@@ -66,6 +71,7 @@
                q => q.category === "beginner" 
             ).items
          },
+
       },
       mounted() {
          const progress = this.$refs['progress-bar']

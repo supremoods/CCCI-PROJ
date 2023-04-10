@@ -1,10 +1,23 @@
 <template>
   <div>
-    <main-menu/>
-    <enter-username/>
-    <encircle-difficulty/>
-    <count-down/>
-    <questions/>
+    <main-menu  
+      @showPanel="showMainMenu" 
+      :isShow="isMainMenu"
+      @getPenColor="color"
+      @getPenThickness="thickness"
+    />
+
+    <enter-username  
+      @back="backEnterUsername" 
+      @next="nextEnterUsername" 
+      :isShow="isEnterUsername"
+      :penThickness="penThickness"
+      :penColor="penColor"
+    />
+
+    <encircle-difficulty />
+    <count-down />
+    <questions />
   </div>
 </template>
 
@@ -16,24 +29,51 @@
   import Questions from '~/components/Questions'
     
   export default {
+      data() {
+        return {
+          isMainMenu: true,
+          isEnterUsername: false,
+          isEncircleDifficulty: false,
+          isCountDown: false,
+          isQuestions: false,
+          penColor: '',
+          penThickness: 0
+        }
+      },
       components: {
-        // ...
         MainMenu,
         EnterUsername,
         EncircleDifficulty,
         CountDown,
         Questions
       },
-      data() {
-        return {
-          // ...
+      methods: {
+        showMainMenu(isStart){
+          if(isStart){
+            this.isMainMenu = false
+            this.isEnterUsername = true
+          }
+        },
+        backEnterUsername(isBack){
+          if(isBack){
+            this.isEnterUsername = false
+            this.isMainMenu = true
+          }
+        },
+        nextEnterUsername(isNext){
+          if(isNext){
+            this.isEnterUsername = false
+            this.isEncircleDifficulty = true
+          }
+        },
+        color(color){
+          this.penColor = color;
+          this.$emit('getPenColor', this.penColor)
+        },
+        thickness(thickness){
+          this.penThickness = thickness;
+          this.$emit('getPenThickness', this.penThickness)
         }
       },
-      methods: {
-        // ...
-      },
-      mounted() {
-        // ...
-      }
   }
 </script>

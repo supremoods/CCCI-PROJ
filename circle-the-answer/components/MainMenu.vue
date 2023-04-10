@@ -1,22 +1,90 @@
 <template>
-   <div class="main-menu h-screen bg-base-violet flex flex-col relative">
+   <div id="main-menu" class="main-menu bg-base-violet flex flex-col relative" :class="{'isShow':isShow}">
       <div class="flex help-icon bg-base-violet-light p-2 absolute right-0 rounded-full m-10">
          <i class='bx bx-question-mark text-lg font-bold text-base-aqua'></i>
       </div>
-      <div  class="wrapper h-full flex flex-col justify-center items-center">
+      <div  class="wrapper h-full flex flex-col justify-center items-center gap-28">
          <div class="title-header">
             <h1 class="title text-6xl font-bold">Stack Quiz</h1>
          </div>
-         <canvas-menu />
+         <div class="flex flex-col w-96">
+            <div class="menu-item relative">
+               <h1>Start</h1>
+               <encircle @get-selected="start" :penColor="penColor" :penThickness="penThickness"/>
+            </div>
+            <div class="menu-item relative">
+               <h1>Score Board</h1>
+               <encircle @get-selected="scoreBoard" :penColor="penColor" :penThickness="penThickness"/>
+            </div>   
+            <div class="menu-item relative">
+               <h1>Pen Settings</h1>
+               <encircle  @get-selected="penSettings" :penColor="penColor" :penThickness="penThickness"/>
+            </div>
+         </div>
       </div>
+      <pen-settings @getPenColor="color" @getPenThickness="thickness" @closeSettings="penSettings" :isPenSettings="isPenSettings"/>
    </div>
 </template>
 
 <script>
-import CanvasMenu from '~/components/canvas/CanvasMenu'
+import Encircle from '~/components/canvas/Encircle'
+import PenSettings from '~/components/PenSettings'
+
 export default {
+   props:{
+      isShow: {
+         type: Boolean,
+         default: true
+      }
+   },
    components:{
-      CanvasMenu
+      Encircle,
+      PenSettings
+   }, 
+   data(){
+      return{
+         isStart: false,
+         isScoreBoard: false,
+         isPenSettings: false,
+         penColor: '#B9E0FF',
+         penThickness: 5
+      }
+   },
+   methods:{
+      start(selected){
+         if(selected){
+            this.isStart = true
+            this.$emit('showPanel', this.isStart)
+            this.$emit('getPenColor', this.penColor)
+            this.$emit('getPenThickness', this.penThickness)
+         }else{
+            this.isStart = false
+            this.$emit('showPanel', this.isStart)
+         }
+      },
+      scoreBoard(selected){
+         if(selected){
+            this.isScoreBoard = true
+         }else{
+            this.isScoreBoard = false
+         }
+         console.log(`Scoreboard is ${this.isScoreBoard}`)
+      },
+      penSettings(selected){
+         if(selected){
+            this.isPenSettings = true
+         }else{
+            this.isPenSettings = false
+         }
+      },
+      color(color){
+         this.penColor = color;
+         console.log("main menu: "+this.penColor)
+      },
+      thickness(thickness){
+         this.penThickness = thickness;
+      }
+
    }
 }
 </script>

@@ -8,7 +8,7 @@
       @getPenColor="color"
       @getPenThickness="thickness"
     />
-
+    ////////// username /////////
     <enter-username  
       @back="backEnterUsername" 
       @next="nextEnterUsername" 

@@ -335,6 +335,12 @@
                   this.countDown(progress)
                }else{
                   this.reset()
+                  clearInterval(this.interval)
+                  this.counterQuestion = 0
+                  this.multiplier = 2
+                  this.correctAnswer = 0
+                  this.points = 0
+                  this.$store.commit('SET_USERNAME', null)
                   this.$emit('next', true)
                }
             }
@@ -345,6 +351,7 @@
             this.counterQuestion = 0
             this.multiplier = 2
             this.correctAnswer = 0
+            this.$store.commit('SET_USERNAME', null)
             this.$emit('back', true)
          },
          reset(){

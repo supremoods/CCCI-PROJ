@@ -104,8 +104,10 @@ export default {
                this.$store.commit('SET_USERNAME', this.userName)
 
                this.isNext = true
+
+               this.reset()
+
                this.$emit('next', true)
-               this.isUserName = true
 
             }else{
                this.$toast.show({
@@ -114,9 +116,11 @@ export default {
                   message: 'Username cannot be empty',
                   classTimeout: 'bg-base-red'
                })
+
                this.isNext = false
-               this.$emit('next', false)
                this.isUserName = false
+
+               this.$emit('next', false)
             }
          }else{
             this.$toast.show({
@@ -127,7 +131,6 @@ export default {
             })
             this.isNext = false
          }
-         console.log(`next is ${this.isNext}`)
       },
       reset(){
          this.userName = ''

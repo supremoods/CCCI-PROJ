@@ -16,12 +16,7 @@ export const getters = {
    correct_answers: state => state.correct_answers,
 }
 
-//actions
-export const actions = {
-
-}
-
-//mutations
+//mutations 
 export const mutations = {
    SET_USERNAME(state, username) {
       state.username = username;

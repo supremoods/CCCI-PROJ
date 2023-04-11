@@ -43,6 +43,7 @@ export default {
             if (count == 0) {
                clearInterval(interval)
                this.isNext = true
+               this.count=5
                this.$emit('next', this.isNext)
             }
          }, 1000)

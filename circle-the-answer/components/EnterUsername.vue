@@ -75,9 +75,16 @@ export default {
          if(selected){
             this.isBack = true
             this.$emit('back', this.isBack)
+            
             this.reset()
          }else{
             this.isBack = false
+            this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `Please make sure you draw a circle around the word "Back"`,
+                  classTimeout: 'bg-base-red'
+            })
             this.$emit('back', this.isBack)
          }
       },
@@ -89,7 +96,7 @@ export default {
                this.$toast.show({
                   type: 'success',
                   title: 'Success',
-                  message: `Username ${this.username} is set`,
+                  message: `Username ${this.userName} is set`,
                   classTimeout: 'bg-base-green'
                })
 
@@ -112,6 +119,12 @@ export default {
                this.isUserName = false
             }
          }else{
+            this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `Please make sure you draw a circle around the word "Next"`,
+                  classTimeout: 'bg-base-red'
+            })
             this.isNext = false
          }
          console.log(`next is ${this.isNext}`)

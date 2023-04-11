@@ -19,6 +19,9 @@
    /* Standard syntax */
 }
 
+body{
+   @apply bg-base-violet;
+}
 
 .canvas {
    @apply absolute top-0;
@@ -26,7 +29,6 @@
 
 .menu-item {
    @apply h-32 items-center justify-center flex;
-   
 }
 
 .menu-item h1 {
@@ -64,14 +66,15 @@
 }
 
 .progress {
-   transition: all 1s ease-in;
+   transition: all .5s ease-in;
 }
 
 .main-menu,
 .enter-username,
 .encircle-diff,
 .questions,
-.count-down {
+.count-down,
+.summary {
    @apply h-0 overflow-hidden transition-all duration-500 ease-in-out;
 }
 
@@ -79,10 +82,14 @@
 .enter-username.isShow,
 .encircle-diff.isShow,
 .count-down.isShow,
-.questions.isShow {
-   @apply h-screen;
+.questions.isShow,
+.summary{
+   @apply h-screen overflow-y-scroll;
 }
 
+.summary{
+   @apply h-screen overflow-y-scroll;
+}
 
 .username[type="text"] {
    @apply transition-all duration-500 ease-in-out border;
@@ -93,7 +100,6 @@
 .username[type="text"]::placeholder {
    @apply text-base-blue;
 }
-
 
 @keyframes border {
    0% {
@@ -126,8 +132,6 @@
       @apply border-b-2 border-base-red shadow-lg shadow-base-red/50
    }
 }
-
-
 
 .range-slider-range {
    --pen-color: #B9E0FF;
@@ -196,11 +200,69 @@ input::-moz-focus-outer {
    @apply text-3xl text-base-blue font-bold;
 }
 
-
-.nav-options .opt .opt-label{
+.nav-options .opt .opt-label,
+.choices .opt .opt-label{
    @apply text-2xl text-base-blue;
 }
 
+.quiz-container{
+   @apply gap-10;
+}
+
+.correct-answer{
+   @apply flex h-full absolute w-full justify-center bottom-[-100em] transition-all ease-in-out duration-1000;
+   background: rgba(15, 5, 36, 0.85);
+}
+
+.correct-answer.isShow{
+   @apply bottom-0 ;
+}
+
+.correct-answer .next-btn{
+   @apply flex relative items-center justify-center h-20;
+}
+
+.correct-answer .wrapper{
+   @apply w-full flex flex-col justify-center items-center;
+}
+
+.correct-answer .wrapper .content{
+   @apply w-9/12 p-10 rounded-xl flex flex-col gap-10 bg-base-violet justify-center ;
+   animation: borderWrongAnswer 1s linear infinite;
+
+}
+
+.correct-answer .wrapper .content.correct{
+   animation: borderCorrectAnswer 1s linear infinite;
+}
+
+@keyframes borderCorrectAnswer {
+   0% {
+      @apply border-t-2 border-r-2 border-l-2 border-base-green shadow-lg shadow-base-green/100
+   }
+
+   50% {
+      @apply border-b border-r border-l border-base-aqua shadow-xl shadow-base-aqua/5
+   }
+
+   100% {
+      @apply border-t-2 border-r-2 border-l-2 border-base-green shadow-lg shadow-base-green/50
+   }
+}
+
+@keyframes borderWrongAnswer {
+   0% {
+      @apply border-t-2 border-r-2 border-l-2 border-base-red shadow-lg shadow-base-red/100
+   }
+
+   50% {
+      @apply border-b border-r border-l border-base-aqua shadow-xl shadow-base-aqua/5
+   }
+
+   100% {
+      @apply border-t-2 border-r-2 border-l-2 border-base-red shadow-lg shadow-base-red/50
+   }
+}
 
 @media screen and (max-width: 810px) {
    .pen-settings .wrapper {
@@ -210,7 +272,6 @@ input::-moz-focus-outer {
    .title-header .title{
       @apply text-4xl;
    }
-
 
    .username[type="text"] {
       @apply text-3xl;
@@ -237,6 +298,7 @@ input::-moz-focus-outer {
    }
 
 }
+
 @media screen and (max-width: 524px){
    .nav-options{
       @apply w-10/12;
@@ -244,5 +306,33 @@ input::-moz-focus-outer {
 
    .encircle-diff .wrapper{
       @apply gap-5;
+   }
+
+   .choices{
+      @apply grid-cols-1 mt-10
+   }
+
+   .choices .opt{
+      @apply flex relative items-center justify-center h-32;
+   }
+   
+   .question{
+      @apply text-2xl;
+   }
+
+   .choices .opt .opt-label{
+      @apply text-xl text-base-blue;
+   }
+
+   .quiz-details{
+      @apply flex-col w-11/12;
+   }
+
+   .questions.isShow {
+      @apply h-full;
+   }
+
+   #toasts{
+      @apply flex-col justify-start;
    }
 }

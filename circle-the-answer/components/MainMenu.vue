@@ -40,7 +40,7 @@
       <pen-settings 
          @getPenColor="color" 
          @getPenThickness="thickness" 
-         @closeSettings="penSettings" 
+         @closeSettings="penSettingsClose" 
          :isPenSettings="isPenSettings"
       />
    </div>
@@ -79,6 +79,13 @@ export default {
             this.$emit('getPenThickness', this.penThickness)
          }else{
             this.isStart = false
+            this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `Please make sure you draw a circle around the word "Start"`,
+                  classTimeout: 'bg-base-red'
+            })
+
             this.$emit('showPanel', this.isStart)
          }
       },
@@ -86,6 +93,12 @@ export default {
          if(selected){
             this.isScoreBoard = true
          }else{
+            this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `Please make sure you draw a circle around the word "Score Board"`,
+                  classTimeout: 'bg-base-red'
+            })
             this.isScoreBoard = false
          }
          console.log(`Scoreboard is ${this.isScoreBoard}`)
@@ -94,8 +107,17 @@ export default {
          if(selected){
             this.isPenSettings = true
          }else{
+            this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `Please make sure you draw a circle around the word "Pen Settings"`,
+                  classTimeout: 'bg-base-red'
+            })
             this.isPenSettings = false
          }
+      },
+      penSettingsClose(isClose){
+         this.isPenSettings = isClose
       },
       color(color){
          this.penColor = color;

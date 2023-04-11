@@ -116,7 +116,7 @@ export default {
       beginner(selected){
          if(selected){
             this.isNext = true
-            this.$store.commit('SET_DIFFICULTY', 'Beginner') 
+            this.$store.commit('SET_DIFFICULTY', 'beginner') 
             this.$emit('next', this.isNext)
          }else{
             this.isNext = false
@@ -126,7 +126,7 @@ export default {
       intermediate(selected){
          if(selected){
             this.isNext = true
-            this.$store.commit('SET_DIFFICULTY', 'Intermediate') 
+            this.$store.commit('SET_DIFFICULTY', 'intermediate') 
             this.$emit('next', this.isNext)
          }else{
             this.isNext = false
@@ -136,7 +136,7 @@ export default {
       advanced(selected){
          if(selected){
             this.isNext = true
-            this.$store.commit('SET_DIFFICULTY', 'Advanced') 
+            this.$store.commit('SET_DIFFICULTY', 'advanced') 
             this.$emit('next', this.isNext)
          }else{
             this.isNext = false

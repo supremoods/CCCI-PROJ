@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="bg-base-violet">
+
+
     <main-menu  
       @showPanel="showMainMenu" 
       :isShow="isMainMenu"
@@ -30,7 +32,15 @@
 
     <questions 
       :isShow="isQuestions"
+      :penThickness="penThickness"
+      :penColor="penColor"
       @back="backToMainMenu"
+      @next="nextQuizSummary"
+    />
+
+    <quiz-summary 
+      :isShow="isSummary"
+      @back="backToMainMenuQS"
     />
 
   </div>
@@ -42,7 +52,8 @@
   import EncircleDifficulty from '~/components/EncircleDifficulty'
   import CountDown from '~/components/CountDown'
   import Questions from '~/components/Questions'
-    
+  import QuizSummary from '~/components/QuizSummary'
+
   export default {
       data() {
         return {
@@ -51,6 +62,7 @@
           isEncircleDifficulty: false,
           isCountDown: false,
           isQuestions: false,
+          isSummary: false,
           penColor: '',
           penThickness: 0
         }
@@ -60,7 +72,8 @@
         EnterUsername,
         EncircleDifficulty,
         CountDown,
-        Questions
+        Questions,
+        QuizSummary
       },
       methods: {
         showMainMenu(isStart){
@@ -99,9 +112,21 @@
             this.isQuestions = true
           }
         },
+        nextQuizSummary(isNext){
+          if(isNext){
+            this.isQuestions = false
+            this.isSummary = true
+          }
+        },
         backToMainMenu(isBack){
           if(isBack){
             this.isQuestions = false
+            this.isMainMenu = true
+          }
+        },
+        backToMainMenuQS(isBack){
+          if(isBack){
+            this.isSummary = false
             this.isMainMenu = true
           }
         },

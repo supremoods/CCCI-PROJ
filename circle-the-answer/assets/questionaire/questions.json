@@ -40,9 +40,133 @@
           ],
           "answer": "Underflow",
           "explanation": "Underflow occurs when the user performs a pop operation on an empty stack. Overflow occurs when the stack is full, and the user performs a push operation. Garbage Collection is used to recover the memory occupied by objects that are no longer used"
+        },
+        {
+          "question": "Pushing an element into stack already having five elements and stack size of 5, then stack becomes",
+          "choices": [
+            "Full",
+            "Empty",
+            "Overflow",
+            "Underflow"
+          ],
+          "answer": "Overflow",
+          "explanation": "The stack is filled with 5 elements and pushing one more element causes a stack overflow. This results in overwriting memory, code and loss of unsaved work on the computer."
+        },
+        {
+          "question": "Elements in an array are accessed",
+          "choices": [
+            "Randomly",
+            "Sequentially",
+            "In reverse order",
+            "logarithmically"
+          ],
+          "answer": "Randomly"
+        },
+        {
+          "question": "Which data structure is used for implementing recursion?",
+          "choices": [
+            "Queue",
+            "Stack",
+            "Tree",
+            "List"
+          ],
+          "answer": "Stack",
+          "explanation":"Stacks are used for the implementation of Recursion."
+        },
+        {
+          "question": "The data structure required to check whether an expression contains a balanced parenthesis is?",
+          "choices":[
+            "Stack",
+            "Queue",
+            "Tree",
+            "List"
+          ],
+          "answer": "Stack",
+          "explanation": "The stack is a simple data structure in which elements are added and removed based on the LIFO principle. Open parenthesis is pushed into the stack and a closed parenthesis pops out elements till the top element of the stack is its corresponding open parenthesis. If the stack is empty, parenthesis is balanced otherwise it is unbalanced."
+        },
+        {
+          "question": "The process of accessing data stored in a serial access memory is like manipulating data on a",
+          "choices": [
+            "Heap",
+            "Binary Tree",
+            "Array",
+            "Stack"
+          ],
+          "answer": "Stack",
+          "explanation": "In serial access memory data records are stored one after the other in which they are created and are accessed sequentially. In stack data structure, elements are accessed sequentially. Stack data structure resembles the serial access memory."
+        },
+        {
+          "question": "Which data structure is needed to convert infix notation to postfix notation?",
+          "choices": [
+            "Branch",
+            "Tree",
+            "Queue",
+            "Stack"
+          ],
+          "answer": "Stack",
+          "explanation": "The Stack data structure is used to convert infix expression to postfix expression. The purpose of stack is to reverse the order of the operators in the expression. It also serves as a storage structure, as no operator can be printed until both of its operands have appeared."
+        }
+      ]
+    },
+    {
+      "category": "advanced",
+      "items":[
+        {
+          "question": "In Linked List implementation, a node carries information regarding",
+          "choices": [
+            "Link",
+            "Data",
+            "Both Link and Data",
+            "None of the above"
+          ],
+          "answer": "Both Link and Data",
+          "explanation": "A linked list is a collection of objects linked together by references from an object to another object. By convention these objects are names as nodes. Linked list consists of nodes where each node contains one or more data fields and a reference(link) to the next node."
+        },
+        {
+          "question": "Which of the following is not the type of queue ?",
+          "choices": [
+            "Ordinary",
+            "Single",
+            "Circular",
+            "Priority"
+          ],
+          "answer": "Single",
+          "explanation": "Queue always has two ends. So, single ended queue is not the type of queue."
+        },
+        {
+          "question": "A linear list of elements in which deletion can be done from one end (front) and insertion can take place only at the other end (rear) is known as",
+          "choices": [
+            "Stack",
+            "Queue",
+            "Tree",
+            "List"
+          ],
+          "answer": "Queue",
+          "explanation": "Linear list of elements in which deletion is done at front side and insertion at rear side is called Queue. In stack we will delete the last entered element first."
+        },
+        {
+          "question": "The data structure required for Breadth First Traversal on a graph is.",
+          "choices": [
+            "Stack",
+            "Queue",
+            "Tree",
+            "List"
+          ],
+          "answer": "Queue",
+          "explanation": "Breadth First Traversal is a graph traversal algorithm that starts traversing the graph from root node and explores all the neighbouring nodes. Then, it selects the nearest node and explore all the unexplored nodes. The algorithm follows the same process for each of the nearest node until it finds the goal."
+        },
+        {
+          "question": "A queue follows. ",
+          "choices": [
+            "LIFO",
+            "FIFO",
+            "FILO",
+            "LILO"
+          ],
+          "answer": "FIFO",
+          "explanation": "Queue follows FIFO (First In First Out) principle. The element which is inserted first will be deleted first."
         }
       ]
     }
-
   ]
 }

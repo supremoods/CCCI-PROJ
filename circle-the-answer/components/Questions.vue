@@ -114,7 +114,7 @@
             counterQuestion:0,
             points:0,
             multiplier:2,
-            items: {},
+            items: [],
             showAnswer: false,
             isWrong: false,
             answer: {},
@@ -336,12 +336,14 @@
                }else{
                   this.reset()
                   clearInterval(this.interval)
+                  this.$store.commit('SET_POINTS', this.points)
+                  this.$store.commit('SET_CORRECT_ANSWERS', this.correctAnswer)
+                  this.$store.commit('SET_ACCURACY', this.correctAnswer / this.items.length * 100)
                   this.counterQuestion = 0
                   this.multiplier = 2
                   this.correctAnswer = 0
                   this.points = 0
-                  this.$store.commit('SET_USERNAME', null)
-                  this.$emit('next', true)
+                  this.$emit('next', {isNext:true, answers: this.answers, items: this.items})
                }
             }
          },
@@ -366,7 +368,7 @@
          addPoints(){
 
             if(!this.isWrong){
-               this.points = this.multiplier * 150
+               this.points += this.multiplier * 150
 
                if(this.multiplier < 8){
                   this.multiplier += 2       

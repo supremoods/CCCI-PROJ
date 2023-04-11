@@ -24,7 +24,7 @@ body{
 }
 
 .canvas {
-   @apply absolute top-0;
+   @apply absolute  top-0;
 }
 
 .menu-item {
@@ -83,13 +83,10 @@ body{
 .encircle-diff.isShow,
 .count-down.isShow,
 .questions.isShow,
-.summary{
+.summary.isShow{
    @apply h-screen overflow-y-scroll;
 }
 
-.summary{
-   @apply h-screen overflow-y-scroll;
-}
 
 .username[type="text"] {
    @apply transition-all duration-500 ease-in-out border;
@@ -154,9 +151,7 @@ body{
    border-radius: 50%;
    background: #2c3e50;
    cursor: pointer;
-
 }
-
 
 .range-slider-range::-moz-range-thumb {
    width: var(--thickness);
@@ -165,7 +160,6 @@ body{
    border-radius: 50%;
    background: var(--pen-color);
    cursor: pointer;
-
 }
 
 ::-moz-range-track {
@@ -236,6 +230,14 @@ input::-moz-focus-outer {
    animation: borderCorrectAnswer 1s linear infinite;
 }
 
+.summary-opt.isCorrect{
+   @apply font-bold text-base-green
+}
+
+.summary-opt.isWrong{
+   @apply font-bold text-base-red
+}
+
 @keyframes borderCorrectAnswer {
    0% {
       @apply border-t-2 border-r-2 border-l-2 border-base-green shadow-lg shadow-base-green/100
@@ -263,6 +265,7 @@ input::-moz-focus-outer {
       @apply border-t-2 border-r-2 border-l-2 border-base-red shadow-lg shadow-base-red/50
    }
 }
+
 
 @media screen and (max-width: 810px) {
    .pen-settings .wrapper {

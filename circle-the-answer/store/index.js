@@ -1,4 +1,4 @@
-//state
+   //state
 export const state = () => ({
    username: null,
    points: null,

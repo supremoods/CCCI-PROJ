@@ -1,7 +1,5 @@
 <template>
   <div class="bg-base-violet">
-
-
     <main-menu  
       @showPanel="showMainMenu" 
       :isShow="isMainMenu"
@@ -40,9 +38,10 @@
 
     <quiz-summary 
       :isShow="isSummary"
+      :answers="answers"
+      :items="items"
       @back="backToMainMenuQS"
     />
-
   </div>
 </template>
 
@@ -64,9 +63,12 @@
           isQuestions: false,
           isSummary: false,
           penColor: '',
-          penThickness: 0
+          penThickness: 0,
+          answers: [],
+          items:[]
         }
-      },
+      }
+      ,
       components: {
         MainMenu,
         EnterUsername,
@@ -112,10 +114,16 @@
             this.isQuestions = true
           }
         },
-        nextQuizSummary(isNext){
-          if(isNext){
+        nextQuizSummary(data){
+          if(data.isNext){
             this.isQuestions = false
             this.isSummary = true
+            this.answers = data.answers
+            this.items = data.items
+
+            console.log(this.answers)
+            console.log(this.items)
+
           }
         },
         backToMainMenu(isBack){
@@ -132,12 +140,10 @@
         },
         color(color){
           this.penColor = color;
-          this.$emit('getPenColor', this.penColor)
         },
         thickness(thickness){
           this.penThickness = thickness;
-          this.$emit('getPenThickness', this.penThickness)
         }
-      },
+      }
   }
 </script>

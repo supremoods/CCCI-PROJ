@@ -60,7 +60,8 @@
             "In reverse order",
             "logarithmically"
           ],
-          "answer": "Randomly"
+          "answer": "Randomly",
+          "explanation":"Elements in an array are accessed randomly. In Linked lists, elements are accessed sequentially."
         },
         {
           "question": "Which data structure is used for implementing recursion?",

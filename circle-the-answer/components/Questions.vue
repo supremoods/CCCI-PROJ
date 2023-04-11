@@ -118,7 +118,8 @@
             showAnswer: false,
             isWrong: false,
             answer: {},
-            answers:[]
+            answers:[],
+            isStreak: false
          }
       },
       computed: {
@@ -156,12 +157,7 @@
          optA(selected){
             if(selected){
                if(this.items[this.counterQuestion].choices[0] === this.items[this.counterQuestion].answer){
-                  this.$toast.show({
-                     type:'success',
-                     title:'alert',
-                     message: 'Your answer is correct',
-                     classTimeout: 'bg-base-green'
-                  })
+
                   this.$refs.optA.style = `color: #00C48C`
                   this.$refs.optB.style = `color: #8D9EFF`
                   this.$refs.optC.style = `color: #8D9EFF`
@@ -177,12 +173,7 @@
                   clearInterval(this.interval)
 
                }else{
-                  this.$toast.show({
-                     type:'danger',
-                     title:'alert',
-                     message: 'Your answer is wrong',
-                     classTimeout: 'bg-base-red'
-                  })
+
 
                   this.$refs.optA.style = `color: #FF5656`
                   this.$refs.optB.style = `color: #8D9EFF`
@@ -196,17 +187,13 @@
 
                   clearInterval(this.interval)
                }
+               this.addPoints()
             }
          },
          optB(selected){
             if(selected){
                if(this.items[this.counterQuestion].choices[1] ===  this.items[this.counterQuestion].answer){
-                  this.$toast.show({
-                     type:'success',
-                     title:'alert',
-                     message: 'Your answer is correct',
-                     classTimeout: 'bg-base-green'
-                  })
+
                   this.$refs.optB.style = `color: #FF5656`
                   this.$refs.optA.style = `color: #8D9EFF`
                   this.$refs.optC.style = `color: #8D9EFF`
@@ -222,12 +209,7 @@
                   clearInterval(this.interval)
 
                }else{
-                  this.$toast.show({
-                     type:'danger',
-                     title:'alert',
-                     message: 'Your answer is wrong',
-                     classTimeout: 'bg-base-red'
-                  })
+    
                   this.$refs.optB.style = `color: #FF5656`
                   this.$refs.optA.style = `color: #8D9EFF`
                   this.$refs.optC.style = `color: #8D9EFF`
@@ -241,17 +223,13 @@
                   clearInterval(this.interval)
 
                }
+               this.addPoints()
             }
          },
          optC(selected){
             if(selected){
                if(this.items[this.counterQuestion].choices[2] ===  this.items[this.counterQuestion].answer){
-                  this.$toast.show({
-                     type:'success',
-                     title:'alert',
-                     message: 'Your answer is correct',
-                     classTimeout: 'bg-base-green'
-                  })
+
                   this.$refs.optC.style = `color: #FF5656`
                   this.$refs.optB.style = `color: #8D9EFF`
                   this.$refs.optA.style = `color: #8D9EFF`
@@ -267,12 +245,7 @@
                   clearInterval(this.interval)
 
                }else{
-                  this.$toast.show({
-                     type:'danger',
-                     title:'alert',
-                     message: 'Your answer is wrong',
-                     classTimeout: 'bg-base-red'
-                  })
+
                   this.$refs.optC.style = `color: #FF5656`
                   this.$refs.optB.style = `color: #8D9EFF`
                   this.$refs.optA.style = `color: #8D9EFF`
@@ -286,17 +259,13 @@
                   clearInterval(this.interval)
 
                }
+               this.addPoints()
             }
          },
          optD(selected){
             if(selected){
                if(this.items[this.counterQuestion].choices[3] === this.items[this.counterQuestion].answer){
-                  this.$toast.show({
-                     type:'success',
-                     title:'alert',
-                     message: 'Your answer is correct',
-                     classTimeout: 'bg-base-green'
-                  })
+
                   this.$refs.optD.style = `color: #FF5656`
                   this.$refs.optB.style = `color: #8D9EFF`
                   this.$refs.optC.style = `color: #8D9EFF`
@@ -311,12 +280,6 @@
 
                   clearInterval(this.interval)
                }else{
-                  this.$toast.show({
-                     type:'danger',
-                     title:'alert',
-                     message: 'Your answer is wrong',
-                     classTimeout: 'bg-base-red'
-                  })
 
                   this.$refs.optD.style = `color: #FF5656`
                   this.$refs.optB.style = `color: #8D9EFF`
@@ -330,6 +293,7 @@
 
                   clearInterval(this.interval)
                }
+               this.addPoints()
             }
          },
 
@@ -367,11 +331,12 @@
             if(selected){
                if(this.counterQuestion < this.items.length){
                   const progress = this.$refs['progress-bar']
+                  this.reset()
                   this.countDown(progress)
                }else{
+                  this.reset()
                   this.$emit('next', true)
                }
-               this.reset()
             }
          },
          backToMainMenu(){
@@ -390,6 +355,41 @@
             this.$refs.optC.style = `color: #8D9EFF`
             this.$refs.optD.style = `color: #8D9EFF`
             this.count = 30;
+         },
+         addPoints(){
+
+            if(!this.isWrong){
+               this.points = this.multiplier * 150
+
+               if(this.multiplier < 8){
+                  this.multiplier += 2       
+               }
+
+               if(this.multiplier <= 4){
+                  this.$toast.show({
+                     type:'success',
+                     title:'Good job',
+                     message: 'Your answer is correct',
+                     classTimeout: 'bg-base-green'
+                  })
+               }else if(this.multiplier >= 6){
+                  this.$toast.show({
+                     type:'success',
+                     title:'Streak points!',
+                     message: 'Genius!, your doing great',
+                     classTimeout: 'bg-base-green'
+                  })
+               }
+            }else{
+               this.$toast.show({
+                  type:'danger',
+                  title:'Nice try',
+                  message: 'Your answer is wrong',
+                  classTimeout: 'bg-base-red'
+               })
+
+               this.multiplier = 2;
+            }
          }
       },
       watch: {

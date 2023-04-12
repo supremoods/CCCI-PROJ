@@ -115,33 +115,33 @@
       "category": "intermediate",
       "items":[
         {
-          "question": "In a stack, if a user tries to remove an element from an empty stack it is called",
+          "question": "In a stack, if a user tries to remove an element from an empty stack it is called?",
           "choices": [
             "Underflow",
-            "Stack-overflow",
             "Empty collection",
+            "Overflow",
             "Garbage Collection"
           ],
           "answer": "Underflow",
-          "explanation": "Underflow occurs when the user performs a pop operation on an empty stack. Overflow occurs when the stack is full, and the user performs a push operation. Garbage Collection is used to recover the memory occupied by objects that are no longer used"
+          "explanation": "Underflow occurs when the user performs a pop operation on an empty stack. Overflow occurs when the stack is full, and the user performs a push operation. Garbage Collection is used to recover the memory occupied by objects that are no longer used."
         },
         {
           "question": "Pushing an element into stack already having five elements and stack size of 5, then stack becomes",
           "choices": [
-            "Full",
-            "Empty",
             "Overflow",
-            "Underflow"
+            "Crash",
+            "Underflow",
+            "User flow"
           ],
           "answer": "Overflow",
           "explanation": "The stack is filled with 5 elements and pushing one more element causes a stack overflow. This results in overwriting memory, code and loss of unsaved work on the computer."
         },
         {
-          "question": "Elements in an array are accessed",
+          "question": "Elements in an array are accessed ________?",
           "choices": [
-            "Randomly",
-            "Sequentially",
-            "In reverse order",
+            "randomly",
+            "sequentially",
+            "exponentially",
             "logarithmically"
           ],
           "answer": "Randomly",
@@ -152,7 +152,7 @@
           "choices": [
             "Queue",
             "Stack",
-            "Tree",
+            "Array",
             "List"
           ],
           "answer": "Stack",
@@ -163,14 +163,14 @@
           "choices":[
             "Stack",
             "Queue",
-            "Tree",
-            "List"
+            "Array",
+            "Tree"
           ],
           "answer": "Stack",
           "explanation": "The stack is a simple data structure in which elements are added and removed based on the LIFO principle. Open parenthesis is pushed into the stack and a closed parenthesis pops out elements till the top element of the stack is its corresponding open parenthesis. If the stack is empty, parenthesis is balanced otherwise it is unbalanced."
         },
         {
-          "question": "The process of accessing data stored in a serial access memory is like manipulating data on a",
+          "question": "The process of accessing data stored in a serial access memory is like manipulating data on a ________",
           "choices": [
             "Heap",
             "Binary Tree",
@@ -190,25 +190,55 @@
           ],
           "answer": "Stack",
           "explanation": "The Stack data structure is used to convert infix expression to postfix expression. The purpose of stack is to reverse the order of the operators in the expression. It also serves as a storage structure, as no operator can be printed until both of its operands have appeared."
+        },
+        {
+          "question": "Circular Queue is also known as ________",
+          "choices":[
+            "Ring Buffer",
+            "Square Buffer",
+            "Rectangle Buffer",
+            "Curve Buffer"
+          ],
+          "answer": "Ring Buffer",
+          "explanation": "Circular Queue is also called as Ring Buffer. Circular Queue is a linear data structure in which last position is connected back to the first position to make a circle. It forms a ring structure."
+        },
+        {
+          "question": "TRUE or FALSE. Dynamic arrays overcome the limit of static arrays.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer": "TRUE",
+          "explanation": "Static arrays have fixed capacity. The capacity must be specified during memory allocation. Dynamic arrays don’t require to specify their capacity during memory allocation. Dynamic arrays have fixed physical size at backend and its capacity increases if required. Thus, Dynamic arrays overcome the limit of static arrays."
+        },
+        {
+          "question": "TRUE or FALSE. Both Dynamic array and Dynamically memory allocated array are same.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer": "FALSE",
+          "explanation": "Physical size of a Dynamic array is fixed with a larger value. Dynamically memory allocated arrays are arraying whose memory is allocated at run time rather than at compile time. Dynamically memory allocated arrays don’t have physical size at the backend. Thus, Dynamic arrays and Dynamically memory allocated arrays are different."
         }
+
       ]
     },
     {
       "category": "advanced",
       "items":[
         {
-          "question": "In Linked List implementation, a node carries information regarding",
+          "question": "In Linked List implementation, a node carries information regarding ________",
           "choices": [
             "Link",
             "Data",
-            "Both Link and Data",
-            "None of the above"
+            "Node",
+            "Both Link and Data"
           ],
           "answer": "Both Link and Data",
           "explanation": "A linked list is a collection of objects linked together by references from an object to another object. By convention these objects are names as nodes. Linked list consists of nodes where each node contains one or more data fields and a reference(link) to the next node."
         },
         {
-          "question": "Which of the following is not the type of queue ?",
+          "question": "Which of the following is not the type of queue?",
           "choices": [
             "Ordinary",
             "Single",
@@ -219,10 +249,10 @@
           "explanation": "Queue always has two ends. So, single ended queue is not the type of queue."
         },
         {
-          "question": "A linear list of elements in which deletion can be done from one end (front) and insertion can take place only at the other end (rear) is known as",
+          "question": "A fi list of elements in which deletion can be done from one end (front) and insertion can take place only at the other end (rear) is known as",
           "choices": [
-            "Stack",
             "Queue",
+            "Stack",
             "Tree",
             "List"
           ],
@@ -233,12 +263,12 @@
           "question": "The data structure required for Breadth First Traversal on a graph is.",
           "choices": [
             "Stack",
+            "Array",
             "Queue",
-            "Tree",
-            "List"
+            "Tree"
           ],
           "answer": "Queue",
-          "explanation": "Breadth First Traversal is a graph traversal algorithm that starts traversing the graph from root node and explores all the neighbouring nodes. Then, it selects the nearest node and explore all the unexplored nodes. The algorithm follows the same process for each of the nearest node until it finds the goal."
+          "explanation": "In Breadth First Search Traversal, BFS, starting vertex is first taken and adjacent vertices which are unvisited are also taken. Again, the first vertex which was added as an unvisited adjacent vertex list will be considered to add further unvisited vertices of the graph. To get the first unvisited vertex we need to follow First in First Out principle. Queue uses FIFO principle."
         },
         {
           "question": "A queue follows. ",
@@ -249,8 +279,60 @@
             "LILO"
           ],
           "answer": "FIFO",
-          "explanation": "Queue follows FIFO (First In First Out) principle. The element which is inserted first will be deleted first."
+          "explanation": "Element first added in queue will be deleted first which is FIFO principle."
+        },
+        {
+          "question": "A data structure in which elements can be inserted or deleted at/from both ends but not in the middle is?",
+          "choices": [
+            "Queue",
+            "Circular",
+            "Dequeue",
+            "Priority"
+          ],
+          "answer": "Dequeue",
+          "explanation": "In dequeuer, we can insert or delete elements from both the ends. In queue, we will follow first in first out principle for insertion and deletion of elements. Element with least priority will be deleted in a priority queue."
+        },
+        {
+          "question": "To search for an element in a sorted array, which searching technique can be used?",
+          "choices": [
+            "Linear",
+            "Jump",
+            "Binary",
+            "Fibonacci"
+          ],
+          "answer": "Binary",
+          "explanation": "Since the array is sorted, binary search is preferred as its time complexity is O(logn)."
+        },
+        {
+          "question": "Given only a single array of size 10 and no other memory is available. Which of the following operation is not feasible to implement (Given only push and pop operation)?",
+          "choices": [
+            "Push",
+            "Pop",
+            "Enqueue",
+            "Returntop"
+          ],
+          "answer": "Enqueue",
+          "explanation": "To perform Enqueue using just push and pop operations, there is a need of another array of same size. But as there is no extra available memory, the given operation is not feasible."
+        },
+        {
+          "question": "TRUE or FALSE. Heap exhibits the property of a binary tree.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer": "TRUE",
+          "explanation": "Yes, because the leaf nodes are present at height h or h-1, which is a property of complete binary tree."
+        },
+        {
+          "question": "TRUE or FALSE. Double hashing is one of the best methods available for open addressing.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer": "TRUE",
+          "explanation": "Double hashing is one of the best methods for open addressing because the permutations produced have many characteristics of randomly chosen permutations."
         }
+
       ]
     }
   ]

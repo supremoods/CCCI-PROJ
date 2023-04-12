@@ -26,7 +26,7 @@
           "explanation": "Elements in the stack are removed using pop operation. Pop operation removes the topmost element in the stack i.e., last entered element"
         },
         {
-          "question": "Complete the sentence by ENCIRCLING the missing word. A stack is a linear data structure in which the insertion of a new element and removal of an existing element takes place at the same end represented as the _______ of the stack.",
+          "question": "Complete the sentence by ENCIRCLING the missing word.      A stack is a linear data structure in which the insertion of a new element and removal of an existing element takes place at the same end represented as the _______ of the stack.",
           "choices": [
             "Element",
             "Top",
@@ -79,13 +79,24 @@
           "explanation": "Array.Length Property is used to get the total number of elements in all the dimensions of the Array. Basically, the length of an array is the total number of the elements which is contained by all the dimensions of that array."
         },
         {
+          "question": "Which of the following is not an example of Array operations?",
+          "choices": [
+            "Insertion",
+            "Selection",
+            "Deletion",
+            "Traversal"
+          ],
+          "answer": "Selection",
+          "explanation": "Following are the basic operations supported by an array: Traverse, Insertion, Deletion, Search, Update. Selection sort is an in-place comparison sorting algorithm."
+        },
+        {
           "question": "TRUE or FALSE. Bit fields and Bit arrays are same.",
           "choices": [
             "TRUE",
             "FALSE"
           ],
           "answer": "FALSE",
-          "explanation": "Explanation: Bit field contains the number of adjacent computer locations used to store the sequence of bits to address a bit or groups of bits. Bit array is an array that stores combinations of bit 0 and bit 1. Thus, bit fields and Bit arrays are different."
+          "explanation": "Bit field contains the number of adjacent computer locations used to store the sequence of bits to address a bit or groups of bits. Bit array is an array that stores combinations of bit 0 and bit 1. Thus, bit fields and Bit arrays are different."
         },
         {
           "question": "How will you implement dynamic arrays in Java?",

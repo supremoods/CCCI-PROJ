@@ -92,6 +92,7 @@ export default {
       scoreBoard(selected){
          if(selected){
             this.isScoreBoard = true
+            this.$emit('showScoreBoard', this.isScoreBoard)
          }else{
             this.$toast.show({
                   type: 'danger',
@@ -100,8 +101,8 @@ export default {
                   classTimeout: 'bg-base-red'
             })
             this.isScoreBoard = false
+            this.$emit('showScoreBoard', this.isScoreBoard)
          }
-         console.log(`Scoreboard is ${this.isScoreBoard}`)
       },
       penSettings(selected){
          if(selected){

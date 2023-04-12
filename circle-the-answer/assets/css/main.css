@@ -74,7 +74,8 @@ body{
 .encircle-diff,
 .questions,
 .count-down,
-.summary {
+.summary,
+.score-board {
    @apply h-0 overflow-hidden transition-all duration-500 ease-in-out;
 }
 
@@ -83,7 +84,8 @@ body{
 .encircle-diff.isShow,
 .count-down.isShow,
 .questions.isShow,
-.summary.isShow{
+.summary.isShow,
+.score-board.isShow {
    @apply h-screen overflow-y-scroll;
 }
 
@@ -97,6 +99,7 @@ body{
 .username[type="text"]::placeholder {
    @apply text-base-blue;
 }
+
 
 @keyframes border {
    0% {
@@ -266,6 +269,23 @@ input::-moz-focus-outer {
    }
 }
 
+.score-board .nav-header .nav-item h1{
+   @apply transition-all ease-out duration-100;
+}
+
+
+
+.score-board .nav-header .nav-item h1.isBeginner,
+.score-board .nav-header .nav-item h1.isIntermediate,
+.score-board .nav-header .nav-item h1.isAdvanced{
+   @apply text-base-aqua border-b-2 pb-1 border-base-aqua;
+}
+
+@media screen and (max-width: 1024px) {
+   .score-board .wrapper {
+      @apply w-10/12;
+   }
+}
 
 @media screen and (max-width: 810px) {
    .pen-settings .wrapper {
@@ -302,7 +322,7 @@ input::-moz-focus-outer {
 
 }
 
-@media screen and (max-width: 524px){
+@media screen and (max-width: 640px){
    .nav-options{
       @apply w-10/12;
    }
@@ -338,4 +358,30 @@ input::-moz-focus-outer {
    #toasts{
       @apply flex-col justify-start;
    }
+
+   .score-board .wrapper {
+      @apply w-11/12;
+   }
+
+   .score-board .column-item{
+      @apply text-lg
+   }
+
+   .score-board .row-item{
+      @apply text-sm;
+   }
+
+   .score-board .nav-header{
+      @apply text-lg gap-4;
+   }
+
+
+   .score-board .nav-footer{
+      @apply py-2;
+   }
+
+   .score-board .nav-footer .back{
+      @apply text-xl;
+   }
+
 }

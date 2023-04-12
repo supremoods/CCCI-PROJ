@@ -1,43 +1,44 @@
 <template>
-   <div class="score-board bg-base-violet flex flex-col relative h-screen items-center">
-      <div class="wrapper flex flex-col w-9/12 py-20">
+   <div class="score-board bg-base-violet flex flex-col relative items-center" :class="{'isShow':isShow}">
+      <div class="wrapper flex flex-col w-3/5 py-20 gap-10">
          <div class="title-header flex justify-center">
             <h1 class="title text-6xl font-bold">Score Board</h1>
          </div>
-         <div class="nav-header flex justify-center">
-            <div class="nav-item">
-               <h1 ref="Beginner" class="text-5x1 font-bold text-base-blue ">Beginner</h1>
+         <div class="nav-header flex justify-center gap-16">
+            <div class="nav-item" @click="filterDifficulty(`beginner`)" >
+               <h1 class="text-2xl font-bold text-base-blue " :class="{'isBeginner':isBeginner}">Beginner</h1>
             </div>
-            <div class="nav-item">
-               <h1 ref="Intermediate" class="text-5x1 font-bold text-base-blue ">Intermediate</h1>
+            <div class="nav-item" @click="filterDifficulty(`intermediate`)" >
+               <h1 class="text-2xl font-bold text-base-blue " :class="{'isIntermediate':isIntermediate}">Intermediate</h1>
             </div>
-            <div class="nav-item">
-               <h1 ref ="Advanced" class="text-5x1 font-bold text-base-blue ">Advanced</h1>
+            <div class="nav-item"  @click="filterDifficulty(`advanced`)">
+               <h1 class="text-2xl font-bold text-base-blue "  :class="{'isAdvanced':isAdvanced}">Advanced</h1>
             </div>
          </div>
          <table class="score-board-table table-fixed">
             <thead>
                <tr>
-                  <th class="px-6 py-3">Rank</th>
-                  <th class="px-6 py-3">Username</th>
-                  <th class="px-6 py-3">Difficulty</th>
-                  <th class="px-6 py-3">Accuracy</th>
-                  <th class="px-6 py-3">Points</th>
+                  <th v-for="(item, index) in column" :key="index" class="column-item text-xl text-base-blue">{{ item }}</th>
                </tr>
             </thead>
             <tbody>
-               <tr>
-                  <td class="px-6 py-4">1</td>
-                  <td class="px-6 py-4">John</td>
-                  <td class="px-6 py-4">Beginner</td>
-                  <td class="px-6 py-4">100%</td>
-                  <td class="px-6 py-4">2500</td>
+               <tr v-for="(user, index) in rankList" :key="index">
+                  <td class="row-item text-lg text-base-blue text-center">{{ index+1 }}</td>
+                  <td class="row-item text-lg text-base-blue text-center">{{ user.username }}</td>
+                  <td class="row-item text-lg text-base-blue text-center">{{ user.accuracy.toFixed(2) }} %</td>
+                  <td class="row-item text-lg text-base-blue text-center">{{ user.points }}</td>
                </tr>
             </tbody>
          </table>
-         <div class="nav-footer flex">
-            <div class="flex">
-               <h1 ref="Back" class="text-2xl text-base-blue ">Back</h1>
+         <div class="nav-footer flex justify-center ">
+            <div class="flex relative items-center justify-center h-32 ">
+               <h1 ref="Back" class="back text-2xl text-base-blue ">Back</h1>
+               <encircle 
+                  @selected="isSelectedBack"
+                  @get-selected="back" 
+                  :penColor="penColor" 
+                  :penThickness="penThickness"
+               />
             </div>
          </div>
       </div>
@@ -45,9 +46,82 @@
 </template>
 
 <script>
+   import Encircle from '~/components/canvas/Encircle'
+   
    export default{
       props:{
-
+         isShow: {
+            type: Boolean,
+            default: false
+         },
+         penColor: {
+            type: String,
+            default: '#8D72E1'
+         },
+         penThickness: {
+            type: Number,
+            default: 5
+         }
+      },
+      components:{
+         Encircle
+      },
+      data: ()=> ({
+         column: ['Rank', 'Username', 'Accuracy', 'Points'],
+         isBeginner: true,
+         isIntermediate: false,
+         isAdvanced: false
+      }),
+      computed:{
+         rankList(){
+            if(this.isBeginner){
+               return JSON.parse(localStorage.getItem('ranking')).filter(user => user.difficulty === 'beginner').sort((a, b) => b.points - a.points)
+            }else if(this.isIntermediate){
+               return JSON.parse(localStorage.getItem('ranking')).filter(user => user.difficulty === 'intermediate').sort((a, b) => b.points - a.points)
+            }else if(this.isAdvanced){
+               return JSON.parse(localStorage.getItem('ranking')).filter(user => user.difficulty === 'advanced').sort((a, b) => b.points - a.points)
+            }
+         }
+      },
+      methods:{
+         isSelectedBack(highLight){
+            if(highLight){
+               this.$refs.Back.style = `color: ${this.penColor}`
+            }else{
+               this.$refs.Back.style = `color: #B9E0FF`
+            }
+         },
+         back(selected){
+            if(selected){
+               this.isBack = true
+               this.$emit('back', this.isBack)
+               
+            }else{
+               this.isBack = false
+               this.$toast.show({
+                     type: 'danger',
+                     title: 'alert',
+                     message: `Please make sure you draw a circle around the word "Back"`,
+                     classTimeout: 'bg-base-red'
+               })
+               this.$emit('back', this.isBack)
+            }
+         },
+         filterDifficulty(difficulty){
+            if(difficulty === "beginner"){
+               this.isBeginner = true
+               this.isIntermediate = false
+               this.isAdvanced = false
+            }else if(difficulty === "intermediate"){
+               this.isBeginner = false
+               this.isIntermediate = true
+               this.isAdvanced = false
+            }else if(difficulty === "advanced"){
+               this.isBeginner = false
+               this.isIntermediate = false
+               this.isAdvanced = true
+            }
+         }
       }
    }
 </script>

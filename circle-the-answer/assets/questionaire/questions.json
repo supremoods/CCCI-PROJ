@@ -12,10 +12,10 @@
             "Pop"
           ],
           "answer": "Push",
-          "explanation": "The Push operation allows users to insert elements in the stack. If the stack is filled completely and trying to perform push operation, stack-overflow can happen."
+          "explanation": "The Push operation allows users to insert elements in the stack. If the stack is filled completely and trying to perform push operation stack–overflow can happen."
         },
         {
-          "question": "What is the process of removing an element from a stack?",
+          "question": "What is the process of removing an element from stack?",
           "choices": [
             "Create",
             "Push",
@@ -23,11 +23,11 @@
             "Pop"
           ],
           "answer": "Pop",
-          "explanation": "The Pop operation allows users to remove elements from the stack. If the stack is empty and trying to perform pop operation, stack-underflow can happen."
+          "explanation": "Elements in the stack are removed using pop operation. Pop operation removes the topmost element in the stack i.e., last entered element"
         },
         {
-          "question": "Complete the sentence by ENCIRCLING the missing word",
-          "choices":[
+          "question": "Complete the sentence by ENCIRCLING the missing word. A stack is a linear data structure in which the insertion of a new element and removal of an existing element takes place at the same end represented as the _______ of the stack.",
+          "choices": [
             "Element",
             "Top",
             "Array",
@@ -37,15 +37,24 @@
           "explanation": "There are many real-life examples of a stack. Consider the simple example of plates stacked over one another in a canteen. The plate which is at the top is the first one to be removed, i.e., the plate which has been placed at the bottommost position remains in the stack for the longest period. So, it can be simply seen to follow the LIFO/FILO order."
         },
         {
+          "question": "TRUE or FALSE. Each item in an array is indexed starting with 1.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer":"FALSE",
+          "explanation": "An array arr[i] is interpreted as *(arr+i). Here, array denotes the address of the first array element or the 0-index element. So *(arr+i) means the element at i distance from the first element of the array. So, array index starts from 0 as initially i is 0 which means the first element of the array."
+        },
+        {
           "question": "Elements are items stored in an array and can be accessed by their index.",
           "choices": [
-            "index",
+            "Index",
             "Matrix",
-            "Array",
+            "Length",
             "Element"
           ],
-          "answer":"Element",
-          "explanation": "Elements are items stored in an array and can be accessed by their index."
+          "answer": "Element",
+          "explanation": "Each item in an array is called an element, and each element is accessed by its numerical index."
         },
         {
           "question": "Maintaining the order of elements in the array.",
@@ -55,8 +64,39 @@
             "Sorting",
             "Searching"
           ],
-          "answer": "Searching",
-          "explanation": "Searching is the process of finding an element in an array. It is a linear search if the array is not sorted. If the array is sorted, then binary search can be performed."
+          "answer": "Sorting",
+          "explanation": "Sorting an array means to arrange the elements in the array in a certain order."
+        },
+        {
+          "question": "The length of an array is determined by the number of elements it can contain.",
+          "choices": [
+            "Index",
+            "Matrix",
+            "Length",
+            "Element"
+          ],
+          "answer": "Length",
+          "explanation": "Array.Length Property is used to get the total number of elements in all the dimensions of the Array. Basically, the length of an array is the total number of the elements which is contained by all the dimensions of that array."
+        },
+        {
+          "question": "TRUE or FALSE. Bit fields and Bit arrays are same.",
+          "choices": [
+            "TRUE",
+            "FALSE"
+          ],
+          "answer": "FALSE",
+          "explanation": "Explanation: Bit field contains the number of adjacent computer locations used to store the sequence of bits to address a bit or groups of bits. Bit array is an array that stores combinations of bit 0 and bit 1. Thus, bit fields and Bit arrays are different."
+        },
+        {
+          "question": "How will you implement dynamic arrays in Java?",
+          "choices": [
+            "Set",
+            "Map",
+            "HashMap",
+            "List"
+          ],
+          "answer": "List",
+          "explanation": "ArrayList is used to implement dynamic arrays in Java."
         }
       ]
     },

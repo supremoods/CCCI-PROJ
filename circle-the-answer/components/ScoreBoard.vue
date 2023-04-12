@@ -1,18 +1,18 @@
 <template>
-   <div class="score-board bg-base-violet flex flex-col relative h-screen">
-      <div class="wrapper flex flex-col w-9/12">
-         <div class="title-header">
+   <div class="score-board bg-base-violet flex flex-col relative h-screen items-center">
+      <div class="wrapper flex flex-col w-9/12 py-20">
+         <div class="title-header flex justify-center">
             <h1 class="title text-6xl font-bold">Score Board</h1>
          </div>
-         <div class="nav-header flex">
+         <div class="nav-header flex justify-center">
             <div class="nav-item">
-               <h2>Beginner</h2>
+               <h1 ref="Beginner" class="text-5x1 font-bold text-base-blue ">Beginner</h1>
             </div>
             <div class="nav-item">
-               <h2>Intermediate</h2>
+               <h1 ref="Intermediate" class="text-5x1 font-bold text-base-blue ">Intermediate</h1>
             </div>
             <div class="nav-item">
-               <h2>Advanced</h2>
+               <h1 ref ="Advanced" class="text-5x1 font-bold text-base-blue ">Advanced</h1>
             </div>
          </div>
          <table class="score-board-table table-fixed">

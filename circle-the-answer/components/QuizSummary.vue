@@ -48,16 +48,20 @@
                </div>
             </div>
          </div>
+
       </div>
    </div>
 </template>
 
 <script>
    import {mapState} from 'vuex'
-   const QuizRanking = require('~/static/QuizRanking.json')
-
 
    export default{
+      data: () => ({
+         quizRanking: {
+            scoreBoard: []
+         }
+      }),
       props: {
          isShow: {
             type: Boolean,
@@ -76,26 +80,42 @@
          ...mapState(['username', 'points', 'correct_answers', 'difficulty', 'accuracy']),
       },
       methods:{
-         async pushQuizRanking(){
-            // // push to QuizRanking
-            // const data = {
-            //    username: this.username,
-            //    points: this.points,
-            //    correct_answers: this.correct_answers,
-            //    difficulty: this.difficulty,
-            //    accuracy: this.accuracy
-            // }
+         saveUserData(){
+            // save username, points, correct_answers, difficulty and accuracy in local storage
+            if(localStorage.hasOwnProperty("ranking")){
+               this.quizRanking.scoreBoard = JSON.parse(localStorage.getItem('ranking'))
 
-            // await QuizRanking.push(data)
+               this.quizRanking.scoreBoard.push({
+                  username: this.username,
+                  points: this.points,
+                  correct_answers: this.correct_answers,
+                  difficulty: this.difficulty,
+                  accuracy: this.accuracy
+               })
 
-            // // save to local storage
-            // localStorage.setItem('QuizRanking', JSON.stringify(QuizRanking))
+               localStorage.setItem('ranking', JSON.stringify(this.quizRanking.scoreBoard))
 
 
+               console.log("bitch")
+            }else{
+               this.quizRanking.scoreBoard.push({
+                  username: this.username,
+                  points: this.points,
+                  correct_answers: this.correct_answers,
+                  difficulty: this.difficulty,
+                  accuracy: this.accuracy
+               })
 
+               localStorage.setItem('ranking', JSON.stringify(this.quizRanking.scoreBoard))
+
+               console.log("test")
+            }
+
+            console.log(JSON.parse(localStorage.getItem('ranking')))
 
          },
          backToMainMenu(){
+            this.saveUserData()
             this.$emit('back', true)
          },
       },

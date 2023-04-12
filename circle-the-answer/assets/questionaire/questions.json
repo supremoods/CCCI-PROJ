@@ -24,6 +24,39 @@
           ],
           "answer": "Pop",
           "explanation": "The Pop operation allows users to remove elements from the stack. If the stack is empty and trying to perform pop operation, stack-underflow can happen."
+        },
+        {
+          "question": "Complete the sentence by ENCIRCLING the missing word",
+          "choices":[
+            "Element",
+            "Top",
+            "Array",
+            "List"
+          ],
+          "answer": "Top",
+          "explanation": "There are many real-life examples of a stack. Consider the simple example of plates stacked over one another in a canteen. The plate which is at the top is the first one to be removed, i.e., the plate which has been placed at the bottommost position remains in the stack for the longest period. So, it can be simply seen to follow the LIFO/FILO order."
+        },
+        {
+          "question": "Elements are items stored in an array and can be accessed by their index.",
+          "choices": [
+            "index",
+            "Matrix",
+            "Array",
+            "Element"
+          ],
+          "answer":"Element",
+          "explanation": "Elements are items stored in an array and can be accessed by their index."
+        },
+        {
+          "question": "Maintaining the order of elements in the array.",
+          "choices": [
+            "Sequence",
+            "Traversal",
+            "Sorting",
+            "Searching"
+          ],
+          "answer": "Searching",
+          "explanation": "Searching is the process of finding an element in an array. It is a linear search if the array is not sorted. If the array is sorted, then binary search can be performed."
         }
       ]
     },

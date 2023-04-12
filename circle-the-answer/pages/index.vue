@@ -1,5 +1,10 @@
 <template>
   <div class="bg-base-violet">
+
+    <score-board
+      :isShow="isScoreBoard"
+    />
+
     <main-menu  
       @showPanel="showMainMenu" 
       :isShow="isMainMenu"
@@ -52,6 +57,7 @@
   import CountDown from '~/components/CountDown'
   import Questions from '~/components/Questions'
   import QuizSummary from '~/components/QuizSummary'
+  import ScoreBoard from '~/components/ScoreBoard'
 
   export default {
       data() {
@@ -62,6 +68,7 @@
           isCountDown: false,
           isQuestions: false,
           isSummary: false,
+          isScoreBoard: false,
           penColor: '',
           penThickness: 0,
           answers: [],
@@ -75,7 +82,8 @@
         EncircleDifficulty,
         CountDown,
         Questions,
-        QuizSummary
+        QuizSummary,
+        ScoreBoard
       },
       methods: {
         showMainMenu(isStart){

@@ -144,7 +144,7 @@
             "exponentially",
             "logarithmically"
           ],
-          "answer": "Randomly",
+          "answer": "randomly",
           "explanation":"Elements in an array are accessed randomly. In Linked lists, elements are accessed sequentially."
         },
         {

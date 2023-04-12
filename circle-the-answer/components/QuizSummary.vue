@@ -77,19 +77,19 @@
       },
       methods:{
          async pushQuizRanking(){
-            // push to QuizRanking
-            const data = {
-               username: this.username,
-               points: this.points,
-               correct_answers: this.correct_answers,
-               difficulty: this.difficulty,
-               accuracy: this.accuracy
-            }
+            // // push to QuizRanking
+            // const data = {
+            //    username: this.username,
+            //    points: this.points,
+            //    correct_answers: this.correct_answers,
+            //    difficulty: this.difficulty,
+            //    accuracy: this.accuracy
+            // }
 
-            await QuizRanking.push(data)
+            // await QuizRanking.push(data)
 
-            // save to local storage
-            localStorage.setItem('QuizRanking', JSON.stringify(QuizRanking))
+            // // save to local storage
+            // localStorage.setItem('QuizRanking', JSON.stringify(QuizRanking))
 
 
 

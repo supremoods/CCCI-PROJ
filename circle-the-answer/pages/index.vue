@@ -1,12 +1,14 @@
 <template>
   <div class="bg-base-violet">
 
-    <!-- <score-board
+    <score-board
       :isShow="isScoreBoard"
-    /> -->
+      @back="backScoreBoard" 
+    />
 
     <main-menu  
       @showPanel="showMainMenu" 
+      @showScoreBoard="showScoreBoard"
       :isShow="isMainMenu"
       @getPenColor="color"
       @getPenThickness="thickness"
@@ -74,8 +76,7 @@
           answers: [],
           items:[]
         }
-      }
-      ,
+      },
       components: {
         MainMenu,
         EnterUsername,
@@ -142,11 +143,23 @@
             this.isMainMenu = true
           }
         },
+        backScoreBoard(isBack){
+          if(isBack){
+            this.isScoreBoard = false
+            this.isMainMenu = true
+          }
+        },
         color(color){
           this.penColor = color;
         },
         thickness(thickness){
           this.penThickness = thickness;
+        },
+        showScoreBoard(isShow){
+          if(isShow){
+            this.isMainMenu = false
+            this.isScoreBoard = true
+          }
         }
       }
   }

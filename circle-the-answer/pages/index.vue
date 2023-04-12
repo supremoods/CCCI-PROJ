@@ -1,9 +1,9 @@
 <template>
   <div class="bg-base-violet">
 
-    <score-board
+    <!-- <score-board
       :isShow="isScoreBoard"
-    />
+    /> -->
 
     <main-menu  
       @showPanel="showMainMenu" 

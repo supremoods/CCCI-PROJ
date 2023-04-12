@@ -52,7 +52,6 @@ export default {
    watch: {
       isShow() {
          if (this.isShow) {
-            console.log('watch')
             this.countDown()
          }
       }

@@ -67,7 +67,6 @@ export default {
       next(selected){
          if(selected){
             // check if username is not empty
-            console.log(selected)
             this.$emit('next', selected)
          }else{
             this.$toast.show({

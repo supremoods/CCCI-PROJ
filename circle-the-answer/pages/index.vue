@@ -120,10 +120,6 @@
             this.isSummary = true
             this.answers = data.answers
             this.items = data.items
-
-            console.log(this.answers)
-            console.log(this.items)
-
           }
         },
         backToMainMenu(isBack){

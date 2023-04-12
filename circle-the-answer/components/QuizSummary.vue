@@ -21,7 +21,7 @@
                   <h1 class="text-xl text-base-blue">Points: <span class="font-bold">{{ points }}</span></h1>
                </div>
                <div class="score">
-                  <h1 class="text-xl text-base-blue">Score: <span class="font-bold">{{ correct_answers }}/10</span></h1>
+                  <h1 class="text-xl text-base-blue">Score: <span class="font-bold">{{ correct_answers }}/{{ items.length }}</span></h1>
                </div>
                <div class="difficulty">
                   <h1 class="text-xl text-base-blue">Difficulty: <span class="font-bold">{{ difficulty }}</span></h1>
@@ -54,6 +54,8 @@
 
 <script>
    import {mapState} from 'vuex'
+   const QuizRanking = require('~/static/QuizRanking.json')
+
 
    export default{
       props: {
@@ -74,6 +76,25 @@
          ...mapState(['username', 'points', 'correct_answers', 'difficulty', 'accuracy']),
       },
       methods:{
+         async pushQuizRanking(){
+            // push to QuizRanking
+            const data = {
+               username: this.username,
+               points: this.points,
+               correct_answers: this.correct_answers,
+               difficulty: this.difficulty,
+               accuracy: this.accuracy
+            }
+
+            await QuizRanking.push(data)
+
+            // save to local storage
+            localStorage.setItem('QuizRanking', JSON.stringify(QuizRanking))
+
+
+
+
+         },
          backToMainMenu(){
             this.$emit('back', true)
          },
@@ -81,8 +102,7 @@
       watch:{
          items (val) {
             console.log(val)
-         },
-         
+         }
       }
    }
 </script>

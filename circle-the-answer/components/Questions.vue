@@ -327,7 +327,6 @@
          },
          next(selected){
             this.counterQuestion++
-            console.log(`${this.counterQuestion} : ${this.items.length}`)
             if(selected){
                if(this.counterQuestion < this.items.length){
                   const progress = this.$refs['progress-bar']
@@ -405,6 +404,9 @@
          isShow() {
             if(this.isShow) {
                const progress = this.$refs['progress-bar']
+               this.items = []
+               this.answer = {}
+               this.answers = []
                this.countDown(progress)
             }
          },

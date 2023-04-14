@@ -1,6 +1,12 @@
 <template>
    <div id="main-menu" class="main-menu bg-base-violet flex flex-col relative" :class="{'isShow':isShow}">
-      <div class="flex help-icon bg-base-violet-light p-2 absolute right-0 rounded-full m-10">
+      <instructions v-if="counterStep == 0 && isInstruction" 
+         class="absolute right-24 top-16"
+         @next="nextStep"
+         @back="prevStep"
+         :counter="counterStep"
+      />
+      <div class="flex help-icon bg-base-violet-light p-2 absolute right-0 rounded-full m-10" @click="showInstruction">
          <i class='bx bx-question-mark text-lg font-bold text-base-aqua'></i>
       </div>
       <div  class="wrapper h-full flex flex-col justify-center items-center gap-28">
@@ -15,6 +21,14 @@
                   @get-selected="start" 
                   :penColor="penColor" 
                   :penThickness="penThickness"
+                  :isDraw="isDrawStart"
+               />
+               <instructions
+                  v-if="counterStep == 1 && isInstruction" 
+                  class="absolute right-[-14rem] top-[-5em]"
+                  @next="nextStep"
+                  @back="prevStep"
+                  :counter="counterStep"
                />
             </div>
             <div class="menu-item relative">
@@ -24,6 +38,14 @@
                   @get-selected="scoreBoard" 
                   :penColor="penColor" 
                   :penThickness="penThickness"
+                  :isDraw="isDrawScoreBoard"
+               />
+               <instructions
+                  v-if="counterStep == 2 && isInstruction"
+                  class="absolute left-[-14rem] top-[-5em]"
+                  @next="nextStep"
+                  @back="prevStep"
+                  :counter="counterStep"
                />
             </div>   
             <div class="menu-item relative">
@@ -33,6 +55,14 @@
                   @get-selected="penSettings" 
                   :penColor="penColor" 
                   :penThickness="penThickness"
+                  :isDraw="isDrawPenSettings"
+               />
+               <instructions
+                  v-if="counterStep == 3"
+                  class="absolute right-[-14rem] top-[-5em]"
+                  @next="nextStep"
+                  @back="prevStep"
+                  :counter="counterStep"
                />
             </div>
          </div>
@@ -49,6 +79,7 @@
 <script>
 import Encircle from '~/components/canvas/Encircle'
 import PenSettings from '~/components/PenSettings'
+import Instructions from '~/components/modal/Instructions'
 
 export default {
    props:{
@@ -59,7 +90,8 @@ export default {
    },
    components:{
       Encircle,
-      PenSettings
+      PenSettings,
+      Instructions
    }, 
    data(){
       return{
@@ -67,7 +99,12 @@ export default {
          isScoreBoard: false,
          isPenSettings: false,
          penColor: '#B9E0FF',
-         penThickness: 5
+         penThickness: 5,
+         counterStep: 0,
+         isInstruction: false,
+         isDrawStart: false,
+         isDrawScoreBoard: false,
+         isDrawPenSettings: false,
       }
    },
    methods:{
@@ -146,6 +183,54 @@ export default {
             this.$refs.PenSettings.style = `color: ${this.penColor};`
          }else{
             this.$refs.PenSettings.style = `color: #B9E0FF`
+         }
+      },
+      nextStep(next){
+         console.log(next)
+         if(next){
+            if (this.counterStep < 4) {
+               this.counterStep++
+               console.log(this.counterStep)
+
+               if (this.counterStep == 1) {
+                  this.isDrawStart = true
+                  this.isDrawScoreBoard = false
+                  this.isDrawPenSettings = false
+               }else if(this.counterStep == 2){
+                  this.isDrawStart = false
+                  this.isDrawScoreBoard = true
+                  this.isDrawPenSettings = false
+               }else if(this.counterStep == 3){
+                  this.isDrawStart = false
+                  this.isDrawScoreBoard = false
+                  this.isDrawPenSettings = true
+               }else{
+                  this.isDrawStart = false
+                  this.isDrawScoreBoard = false
+                  this.isDrawPenSettings = false
+
+                  this.isInstruction = !this.isInstruction
+               }
+               console.log(this.isDrawStart)
+               console.log(this.isDrawScoreBoard)
+               console.log(this.isDrawPenSettings)
+            } 
+         }
+      },
+      prevStep(prev){
+         if(prev){
+            if (this.counterStep > 0) {
+               this.counterStep--
+            } 
+         }
+      },
+      showInstruction(){
+         // toggle isInstruction
+         if(this.counterStep >= 1){
+            this.counterStep = 0
+            this.isInstruction = !this.isInstruction
+         }else{
+            this.isInstruction = !this.isInstruction
          }
       }
    }

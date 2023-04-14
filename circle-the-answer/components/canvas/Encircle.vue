@@ -19,7 +19,12 @@
         penThickness: {
           type: Number,
           default: 5
+        },
+        isDraw: {
+          type: Boolean,
+          default: false
         }
+
       },
      mounted() {
         this.canvas =  this.$refs.canvas
@@ -89,7 +94,14 @@
           this.context.shadowColor = this.penColor
           this.context.globalCompositeOperation = 'source-over'
           this.context.globalAlpha = 1
+        },
+        drawCircle(){
+          this.brush()
+          this.context.beginPath()
+          this.context.arc(this.startX, this.startY, this.radius, 0, 2 * Math.PI)
+          this.context.stroke()
 
+          console.log ("drawCircle")
         }
      },
       watch: {
@@ -98,6 +110,10 @@
           },
           penThickness: function (newThickness, oldThickness) {
             this.brush()
+          },
+          isDraw (){
+            console.log("fuck")
+            this.drawCircle()
           }
       }
   }

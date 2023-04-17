@@ -271,7 +271,7 @@
           "explanation": "In Breadth First Search Traversal, BFS, starting vertex is first taken and adjacent vertices which are unvisited are also taken. Again, the first vertex which was added as an unvisited adjacent vertex list will be considered to add further unvisited vertices of the graph. To get the first unvisited vertex we need to follow First in First Out principle. Queue uses FIFO principle."
         },
         {
-          "question": "A queue follows. ",
+          "question": "A queue follows.",
           "choices": [
             "LIFO",
             "FIFO",

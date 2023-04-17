@@ -78,7 +78,6 @@
           } else {
             this.$emit('get-selected', this.isCircle)
           }
-
           this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
         },
         brush(){
@@ -96,6 +95,9 @@
           this.context.globalAlpha = 1
         },
         drawCircle(){
+          this.canvas =  this.$refs.canvas
+          this.context = this.canvas.getContext('2d')
+          this.menuItem = document.querySelector('.menu-item')
           this.brush()
           this.context.beginPath()
           this.context.arc(this.startX, this.startY, this.radius, 0, 2 * Math.PI)

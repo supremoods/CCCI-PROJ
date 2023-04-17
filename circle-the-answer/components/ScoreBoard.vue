@@ -74,6 +74,11 @@
       }),
       computed:{
          rankList(){
+            if (localStorage.getItem('ranking') === null) {
+               console.log('no data')
+               return []
+            }
+            
             if(this.isBeginner){
                return JSON.parse(localStorage.getItem('ranking')).filter(user => user.difficulty === 'beginner').sort((a, b) => b.points - a.points)
             }else if(this.isIntermediate){
@@ -122,6 +127,18 @@
                this.isAdvanced = true
             }
          }
+      },
+      watch:{
+         rankList(){
+            if(this.rankList.length === 0){
+               this.$toast.show({
+                  type: 'danger',
+                  title: 'alert',
+                  message: `No data`,
+                  classTimeout: 'bg-base-red'
+               })
+            }
+         } 
       }
    }
 </script>

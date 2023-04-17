@@ -287,7 +287,7 @@ input::-moz-focus-outer {
    }
 }
 
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 830px) {
    .pen-settings .wrapper {
       @apply items-center;
    }
@@ -320,6 +320,17 @@ input::-moz-focus-outer {
       @apply mt-5;
    }
 
+   .second-step{
+      @apply right-[3rem] top-[-9rem];
+   }
+
+   .third-step{
+      @apply left-[2rem] top-[-10rem];
+   }
+
+   .last-step{
+      @apply right-[3rem] top-[-10rem];
+   }
 }
 
 @media screen and (max-width: 640px){

@@ -25,7 +25,7 @@
                />
                <instructions
                   v-if="counterStep == 1 && isInstruction" 
-                  class="absolute right-[-14rem] top-[-5em]"
+                  class="second-step absolute right-[-14rem] top-[-5em]"
                   @next="nextStep"
                   @back="prevStep"
                   :counter="counterStep"
@@ -42,7 +42,7 @@
                />
                <instructions
                   v-if="counterStep == 2 && isInstruction"
-                  class="absolute left-[-14rem] top-[-5em]"
+                  class="third-step absolute left-[-14rem] top-[-5em]"
                   @next="nextStep"
                   @back="prevStep"
                   :counter="counterStep"
@@ -59,7 +59,7 @@
                />
                <instructions
                   v-if="counterStep == 3"
-                  class="absolute right-[-14rem] top-[-5em]"
+                  class="last-step absolute right-[-14rem] top-[-5em]"
                   @next="nextStep"
                   @back="prevStep"
                   :counter="counterStep"

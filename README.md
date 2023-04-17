@@ -7,7 +7,7 @@
 $ git clone https://github.com/supremoods/CCCI-PROJ.git
 
 # go to circle-the-answer directory
-$ cd circle-the-answer
+$ cd CCCI-PROJ/circle-the-answer
 
 # install dependencies
 $ npm install or npm i
